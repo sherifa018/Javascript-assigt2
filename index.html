@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img
+      src="bulboff.jpg"
+      id="img1"
+      style="width: 400px; height: 400px; align-items: center"
+    />
+    <div>
+      <button type="button" onclick="bulbtest(1)">Turn ON</button>
+      <button type="button" onclick="bulbtest(0)">Turn OFF</button>
+    </div>
+    <br /><br />
+
+    <button onclick="getTime()">Get time</button>
+    <h1 id="result"></h1>
+
+    <h3>Remove the first and the last character</h3>
+    <input type="text" placeholder="Enter String" id="cut" />
+    <button onclick="cutString()">Click</button>
+    <p id="string-result"></p>
+    <script>
+      function bulbtest(value) {
+        var pic;
+        if (value == 0) {
+          pic = "bulboff.jpg";
+        } else {
+          pic = "bulbon.jpg";
+        }
+        document.getElementById("img1").src = pic;
+      }
+
+      function getTime() {
+        const today = new Date();
+        const hours = today.getHours(); //10
+        const minutes = today.getMinutes(); //38
+        const seconds = today.getSeconds(); //22
+
+        var ampm;
+        if (hours > 12) {
+          ampm = "PM"; //--> var ampm="PM"
+        } else {
+          ampm = "AM"; // ---> ampm="AM"
+        }
+        var currenttime = `${hours} :  ${minutes} :  ${seconds}  ${ampm}`;
+        console.log(currenttime);
+        document.getElementById("result").innerHTML = currenttime;
+      }
+
+      // first create one html element
+      //select the created html element // <p id="result"></p>
+      function cutString() {
+        const str = document.getElementById("cut").value;
+        const result = str.slice(1, str.length - 1);
+        document.getElementById("string-result").innerHTML = result;
+      }
+    </script>
+  </body>
+</html>
